@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/books/:pageId" element={<BookPage />}></Route>
+        <Route path="/:pageId" element={<BookPage />}></Route>
       </Routes>
     </BrowserRouter>
   );

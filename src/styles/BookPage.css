@@ -1,0 +1,21 @@
+.book-page-container {
+  width: 60%;
+  display: flex;
+  margin: 0 auto;
+  gap: 1em;
+  height: 100%;
+}
+
+.book-page-container .book-page-info {
+  background-color: pink;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.book-page-container .book-page-info h1,
+.book-page-container .book-page-info h2,
+.book-page-container .book-page-info h3,
+.book-page-container .book-page-info h4 {
+  margin: 0;
+}

@@ -1,7 +1,7 @@
-import "../styles/BookContainer.css";
 import { Link } from "react-router-dom";
+import "../styles/BookContainer.css";
 
-const BookContainer = ({ id, bookCoverUrl, title, author, priceExVat }) => {
+const BookContainer = ({ bookCoverUrl, title, author, priceExVat }) => {
   return (
     <div className="book-container">
       <img src={`${bookCoverUrl}`} />
@@ -11,9 +11,6 @@ const BookContainer = ({ id, bookCoverUrl, title, author, priceExVat }) => {
         <span>
           ${priceExVat} <span>excluding VAT</span>
         </span>
-        <Link to={`/books/${id}`}>
-          <button>Read more</button>
-        </Link>
       </div>
     </div>
   );
