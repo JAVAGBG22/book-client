@@ -1,16 +1,27 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./components/Landing";
+import Login from "./components/Login";
 
 function App() {
-  const [posts, setPosts] = useState();
+  /*   const [books, setBooks] = useState();
+  const [authors, setAuthors] = useState();
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const fetchPosts = async () => {
-    const response = await fetch(`${process.env.REACT_APP_API}posts`);
+  const fetchBooks = async () => {
+    const response = await fetch(`${process.env.REACT_APP_API}books`);
     const data = await response.json();
-    setPosts(data);
+    setBooks(data);
+    console.log(data);
+  };
+
+  const fetchAuthors = async () => {
+    const response = await fetch(`${process.env.REACT_APP_API}authors`);
+    const data = await response.json();
+    setAuthors(data);
     console.log(data);
   };
 
@@ -29,30 +40,39 @@ function App() {
     setTitle("");
     setContent("");
     alert("Post created!");
-    fetchPosts();
+    //fetchPosts();
     setShowCreatePost(false);
   };
 
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    //fetchPosts();
+  }, []); */
 
-  return !showCreatePost ? (
+  return (
+    <BrowserRouter>
+      {/* <Header /> */}
+      <Routes>
+        <Route path="/" element={<Landing />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        {/* <Route path="/book/:pageId" element={<AuctionPage />}></Route> */}
+      </Routes>
+    </BrowserRouter>
+  ); /* !showCreatePost ? (
     <div className="posts-container">
       <div className="top-row">
         <h1>My Posts</h1>
         <button onClick={() => setShowCreatePost(true)}>Create new post</button>
       </div>
-      {posts?.map((post) => (
-        <div key={post._id} className="post-container">
-          <h2>{post.title}</h2>
+      {books?.map((book) => (
+        <div key={book._id} className="post-container">
+          <h2>{book.title}</h2>
           <div className="date-info">
-            <span>{post.postedBy}</span>
+            <span>{book.postedBy}</span>
             <span>
-              {new Date(post.createdAt).toLocaleString().slice(0, -3)}
+              {new Date(book.createdAt).toLocaleString().slice(0, -3)}
             </span>
           </div>
-          <p>{post.content}</p>
+          <p>{book.content}</p>
         </div>
       ))}
     </div>
@@ -81,7 +101,7 @@ function App() {
       </label>
       <button onClick={() => addPost()}>Add post to database</button>
     </div>
-  );
+  ); */
 }
 
 export default App;
