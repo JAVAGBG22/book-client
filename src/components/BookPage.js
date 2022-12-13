@@ -14,7 +14,6 @@ const BookPage = () => {
     const response = await fetch(`${process.env.REACT_APP_API}books/${pageId}`);
     const data = await response.json();
     setBookData(data);
-    console.log(data);
   };
 
   return (
