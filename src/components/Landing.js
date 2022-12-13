@@ -25,10 +25,8 @@ const Landing = () => {
               author={book.author.name}
               bookCoverUrl={book.bookCoverUrl}
               priceExVat={book.priceExVat}
+              link={`/${book._id}`}
             />
-            <Link to={`/${book._id}`}>
-              <button>Read more</button>
-            </Link>
           </div>
         );
       })}
