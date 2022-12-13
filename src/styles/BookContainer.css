@@ -1,0 +1,28 @@
+.book-container {
+  display: flex;
+  gap: 1em;
+  width: 50%;
+}
+
+.book-container img {
+  width: 200px;
+}
+
+.book-container .book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-info span:nth-child(1) {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.book-info span:nth-child(2) {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.book-info span:nth-child(3) {
+  font-size: 3rem;
+  font-weight: bold;
+}

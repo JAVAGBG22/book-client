@@ -1,16 +1,19 @@
-const BookContainer = ({
-  imgUrl = "url",
-  title = "Title",
-  author = "Author",
-  price = "500",
-}) => {
+import "../styles/BookContainer.css";
+import { Link } from "react-router-dom";
+
+const BookContainer = ({ id, bookCoverUrl, title, author, priceExVat }) => {
   return (
     <div className="book-container">
-      <img />
-      <div>
-        <h2>{title}</h2>
-        <h3>{author}</h3>
-        <h3>{price}</h3>
+      <img src={`${bookCoverUrl}`} />
+      <div className="book-info">
+        <span>{title}</span>
+        <span>by {author}</span>
+        <span>
+          ${priceExVat} <span>excluding VAT</span>
+        </span>
+        <Link to={`/books/${id}`}>
+          <button>Read more</button>
+        </Link>
       </div>
     </div>
   );
