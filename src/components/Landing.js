@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BookContainer from "./BookContainer";
+import "../styles/Landing.css";
 
 const Landing = () => {
   const [books, setBooks] = useState([]);
@@ -18,7 +19,7 @@ const Landing = () => {
     <div>
       {books?.map((book) => {
         return (
-          <div key={book._id}>
+          <div key={book._id} className="landing-container">
             <BookContainer
               id={book._id}
               title={book.title}
