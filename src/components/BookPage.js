@@ -23,8 +23,10 @@ const BookPage = () => {
         <h2>{bookData.title}</h2>
         <h3>Author: {bookData.author?.name}</h3>
         <div>ISBN: {bookData.isbn}</div>
-        <div>Pages: {bookData.pages}</div>
-        <div>Description: {bookData.description}</div>
+        <div>{bookData.pages} pages</div>
+        <div>
+          <b>Description:</b> {bookData.description}
+        </div>
       </div>
     </div>
   );
