@@ -24,6 +24,7 @@ const Landing = () => {
               id={book._id}
               title={book.title}
               author={book.author.name}
+              coAuthor={book.coAuthor?.name}
               bookCoverUrl={book.bookCoverUrl}
               priceExVat={book.priceExVat}
               link={`/${book._id}`}

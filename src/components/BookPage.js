@@ -22,6 +22,11 @@ const BookPage = () => {
       <div className="book-page-info">
         <h2>{bookData.title}</h2>
         <h3>Author: {bookData.author?.name}</h3>
+        {bookData.coAuthor != null ? (
+          <h3>Co-author: {bookData.coAuthor?.name}</h3>
+        ) : (
+          ""
+        )}
         <div>ISBN: {bookData.isbn}</div>
         <div>{bookData.pages} pages</div>
         <div>
