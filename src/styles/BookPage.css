@@ -18,3 +18,7 @@
 .book-page-container .book-page-info h4 {
   margin: 0;
 }
+
+.book-page-container .book-page-info h2 {
+  font-size: 2em;
+}
