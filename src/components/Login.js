@@ -1,47 +1,73 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../styles/Login.css";
 
 const Login = () => {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    setUser({ ...user, [name]: value });
-  };
+  const navigate = useNavigate();
 
   const checkEmail = (users) => {
-    const u = users.find((u) => u.email === user.email);
-    if (u.email === user.email) return user;
+    const user = users.find(
+      (user) => user.email === email && user.password === password
+    );
     console.log(user);
+    if (user.email === email && user.password === password) return user;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
-  };
 
-  useEffect(() => {});
+    if (email === "" || password === "") {
+      alert("All fields are required!");
+    }
+
+    const user = await axios
+      .get(`${process.env.REACT_APP_API}user/all`)
+      .then((res) => checkEmail(res.data, email))
+      .catch((error) => {
+        console.log(error);
+      });
+
+    if (user.email === email && user.password === password) {
+      // om login success ska vi spara user i localstorage
+      localStorage.setItem("user", JSON.stringify(user.name));
+      navigate("/");
+    }
+    setEmail("");
+    setPassword("");
+  };
 
   return (
     <div className="login-container">
-      <h1>Login</h1>
-      <div>
-        <label>
-          <h3>Username</h3>
-          <input type="text" />
-        </label>
-        <label>
-          <h3>Password</h3>
-          <input type="text" />
-        </label>
-      </div>
-      <button>Login</button>
+      <form>
+        <h1>Login</h1>
+        <div>
+          <label>
+            <h3>Email</h3>
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label>
+            <h3>Password</h3>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+        </div>
+      </form>
+      <button type="submit" onClick={handleSubmit}>
+        Login
+      </button>
     </div>
   );
 };
